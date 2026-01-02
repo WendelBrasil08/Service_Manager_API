@@ -1,3 +1,6 @@
+import { AgendamentoRepository } from "../agendamento_repository.ts";
+import { Agendamento } from "../../entity/agendamento.ts";
+
 export class InMemoryAgendamentoRepository implements AgendamentoRepository {
   private agendamentos: Agendamento[] = [];
 

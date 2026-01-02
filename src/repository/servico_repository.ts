@@ -1,4 +1,6 @@
-interface ServicoRepository {
+import { Servico } from "../entity/servico.ts";
+
+export interface ServicoRepository {
   criar(servico: Servico): Promise<Servico>;
   buscarPorNome(nome: string): Promise<Servico | null>;
   atualizar(servico: Servico): Promise<Servico>;

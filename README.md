@@ -14,11 +14,11 @@
 - Usuário: [id, nome, email, senha, data_criação]
 - Cliente: [id, nome_completo, email, telefone]
 - Serviço: [id, nome, descrição, preço, duração]
-- Agendamento: [id, data, horário_incio, horário_término, cliente_id, serviço_id, status]
+- Agendamento: [id, data, horário_inicio, horário_término, cliente_id, serviço_id, status]
 - Pagamento: [id, valor, forma_pagamento, status, agendamento_id, data_pagamento]
 
 
-## Reagras de Negócio
+## Regras de Negócio
 [] Cadastrar um Usuário
 [] - Email deve ser único
 

@@ -1,3 +1,6 @@
+import { PagamentoRepository } from "../pagamento_repository.ts";
+import { Pagamento } from "../../entity/pagamento.ts";
+
 export class InMemoryPagamentoRepository implements PagamentoRepository {
   private pagamentos: Pagamento[] = [];
 

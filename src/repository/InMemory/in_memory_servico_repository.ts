@@ -1,3 +1,6 @@
+import { ServicoRepository } from "../servico_repository.ts";
+import { Servico } from "../../entity/servico.ts";
+
 export class InMemoryServicoRepository implements ServicoRepository {
   private servicos: Servico[] = [];
   private currentId: number = 1;

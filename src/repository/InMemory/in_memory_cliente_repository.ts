@@ -1,3 +1,5 @@
+import { ClienteRepository } from "../cliente_repository.ts";
+import { Cliente } from "../../entity/Cliente.ts";
 export class InMemoryClienteRepository implements ClienteRepository {
   private clientes: Cliente[] = [];
   private currentId: number = 1;
