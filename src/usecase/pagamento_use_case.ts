@@ -1,5 +1,5 @@
-import { PagamentoRepository } from "../repository/pagamento_repository.ts";
-import { Pagamento } from "../entity/pagamento.ts";
+import { PagamentoRepository } from "../repositories/pagamento_repository.ts";
+import { Pagamento } from "../domain/entities/pagamento.ts";
 
 export class PagamentoUseCase {
   constructor(private pagamentoRepository: PagamentoRepository) {}

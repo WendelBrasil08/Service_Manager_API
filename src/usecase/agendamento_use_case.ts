@@ -1,5 +1,5 @@
-import { AgendamentoRepository } from "../repository/agendamento_repository.ts";
-import { Agendamento } from "../entity/agendamento.ts";
+import { AgendamentoRepository } from "../repositories/agendamento_repository.ts";
+import { Agendamento } from "../domain/entities/agendamento.ts";
 
 export class AgendamentoUseCase {
   constructor(private agendamentoRepository: AgendamentoRepository) {}

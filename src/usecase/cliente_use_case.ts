@@ -1,5 +1,5 @@
-import { ClienteRepository } from "../repository/cliente_repository.ts";
-import { Cliente } from "../entity/Cliente.ts";
+import { ClienteRepository } from "../repositories/cliente_repository.ts";
+import { Cliente } from "../domain/entities/Cliente.ts";
 
 export class ClienteUseCase {
   constructor(private clienteRepository: ClienteRepository) {}
