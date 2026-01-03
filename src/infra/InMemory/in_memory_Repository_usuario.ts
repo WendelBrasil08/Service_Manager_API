@@ -1,16 +1,14 @@
-import { UsuarioRepository } from "../../repository/usuario_repository.ts";
+import { UsuarioRepository } from "../../repositories/usuario_repository.ts";
 import { Usuario } from "../../domain/entities/Usuario.ts";
 
 export class InMemoryUsuarioRepository implements UsuarioRepository {
   private usuarios: Usuario[] = [];
-  private currentId: number = 1;
 
-  async criar(usuario: Usuario): Promise<Usuario> {
-    const novoUsuario = { ...usuario, id: this.currentId++ };
-    this.usuarios.push(novoUsuario);
-    return novoUsuario;
+  async criarUsuario(usuario: Usuario): Promise<Usuario> {
+    this.usuarios.push(usuario);
+    return usuario;
   }
-  async atualizar(usuario: Usuario): Promise<Usuario> {
+  async atualizarUsuario(usuario: Usuario): Promise<Usuario> {
     const index = this.usuarios.findIndex((u) => u.id === usuario.id);
     if (index === -1) {
       throw new Error("Usuário não encontrado");
@@ -18,7 +16,7 @@ export class InMemoryUsuarioRepository implements UsuarioRepository {
     this.usuarios[index] = usuario;
     return usuario;
   }
-  async deletar(id: number): Promise<void> {
+  async deletarUsuario(id: string): Promise<void> {
     this.usuarios = this.usuarios.filter((u) => u.id !== id);
   }
 }
