@@ -1,15 +1,13 @@
-import { ClienteUseCase } from "../../../UseCase/cliente_use_case";
+import { ClienteUseCase } from "../../../usecase/cliente/cliente_use_case";
 import { FastifyRequest, FastifyReply } from "fastify";
-import { Cliente } from "../../../domain/entities/Cliente.ts";
-import { clienteSchema } from "../schemas/cliente-schemas.ts";
+import { Cliente } from "../../../domain/entities/Cliente";
+import { clienteSchema } from "../schemas/cliente-schemas";
 
 export class ClienteController {
   constructor(private clienteUseCase: ClienteUseCase) {}
   async handle(request: FastifyRequest, reply: FastifyReply) {
     const clienteData = clienteSchema.parse(request.body);
-    const cliente = await this.clienteUseCase.criarCliente(
-      clienteData as Cliente
-    );
+    const cliente = await this.clienteUseCase.criarCliente(clienteData);
     reply.status(201).send(cliente);
   }
   async handleGetByEmail(request: FastifyRequest, reply: FastifyReply) {

@@ -1,15 +1,13 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { PagamentoUseCase } from "../../../UseCase/pagamento_use_case";
-import { Pagamento } from "../../../domain/entities/pagamento.ts";
-import { pagamentoSchema } from "../schemas/pagamento_schemas.ts";
+import { PagamentoUseCase } from "../../../usecase/pagamento/pagamento_use_case";
+import { Pagamento } from "../../../domain/entities/pagamento";
+import { pagamentoSchema } from "../schemas/pagamento_schemas";
 
 export class PagamentoController {
   constructor(private pagamentoUseCase: PagamentoUseCase) {}
   async handle(request: FastifyRequest, reply: FastifyReply) {
     const pagamentoData = pagamentoSchema.parse(request.body);
-    const pagamento = await this.pagamentoUseCase.criarPagamento(
-      pagamentoData as unknown as Pagamento
-    );
+    const pagamento = await this.pagamentoUseCase.criarPagamento(pagamentoData);
     reply.status(201).send(pagamento);
   }
   async handleGetById(request: FastifyRequest, reply: FastifyReply) {

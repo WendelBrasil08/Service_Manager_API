@@ -1,5 +1,10 @@
-import { errorHandler } from "./middlewares/errorHandler";
-import fastify from "fastify";
+import { app } from "./app.ts";
 
-export const server = fastify();
-server.setErrorHandler(errorHandler);
+const PORT = 3000;
+app.listen({ port: PORT }, (err, address) => {
+  if (err) {
+    console.error(err);
+    process.exit(1);
+  }
+  console.log(`Server running on ${address}`);
+});

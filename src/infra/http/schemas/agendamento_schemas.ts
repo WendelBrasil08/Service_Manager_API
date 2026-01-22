@@ -1,21 +1,17 @@
 import { z } from "zod";
+import { Agendamento } from "../../../domain/entities/agendamento";
+import { AgendamentoStatus } from "../../../domain/enum/agendamento_status";
 
 export const agendamentoSchema = z.object({
-  id: z.string().optional(),
-  data: z
-    .string()
-    .refine((date) => !isNaN(Date.parse(date)), { message: "Data inválida" }),
-  horario_inicio: z
-    .string()
-    .refine((time) => /^([0-1]\d|2[0-3]):([0-5]\d)$/.test(time), {
-      message: "Horário de início inválido",
-    }),
-  horario_termino: z
-    .string()
-    .refine((time) => /^([0-1]\d|2[0-3]):([0-5]\d)$/.test(time), {
-      message: "Horário de término inválido",
-    }),
-  duracao: z.number().positive(),
-  servico_id: z.string(),
+  id: z.string(),
   cliente_id: z.string(),
+  servico_id: z.string(),
+  horario_inicio: z.date(),
+  horario_termino: z.date(),
+  data_agendamento: z.date(),
+  status: z.enum([
+    AgendamentoStatus.AGENDADO,
+    AgendamentoStatus.REALIZADO,
+    AgendamentoStatus.CANCELADO,
+  ]),
 });

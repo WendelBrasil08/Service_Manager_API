@@ -1,16 +1,13 @@
-import { ServicoUseCase } from "../../../UseCase/servico_use_case";
+import { ServicoUseCase } from "../../../usecase/servico/servico_use_case";
 import { FastifyRequest, FastifyReply } from "fastify";
-import { Servico } from "../../../domain/entities/servico.ts";
-import { servicoSchema } from "../schemas/servico_schemas.ts";
+import { servicoSchema } from "../schemas/servico_schemas";
 
 export class ServicoController {
   constructor(private servicoUseCase: ServicoUseCase) {}
 
   async handle(request: FastifyRequest, reply: FastifyReply) {
     const servicoData = servicoSchema.parse(request.body);
-    const servico = await this.servicoUseCase.criarServico(
-      servicoData as Servico
-    );
+    const servico = await this.servicoUseCase.criarServico(servicoData);
     reply.status(201).send(servico);
   }
   async handleGetByName(request: FastifyRequest, reply: FastifyReply) {
@@ -26,9 +23,7 @@ export class ServicoController {
   }
   async handleUpdate(request: FastifyRequest, reply: FastifyReply) {
     const servicoData = servicoSchema.parse(request.body);
-    const servico = await this.servicoUseCase.atualizarServico(
-      servicoData as Servico
-    );
+    const servico = await this.servicoUseCase.atualizarServico(servicoData);
     reply.status(200).send(servico);
   }
   async handleDelete(request: FastifyRequest, reply: FastifyReply) {

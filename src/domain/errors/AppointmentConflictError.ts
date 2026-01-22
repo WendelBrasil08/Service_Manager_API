@@ -1,4 +1,4 @@
-import { DomainError } from "./domain_error.ts";
+import { DomainError } from "./domain_error";
 
 export class AppointmentConflictError extends DomainError {
   statusCode = 409;

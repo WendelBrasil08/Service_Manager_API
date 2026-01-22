@@ -41,7 +41,7 @@
 [] - Um cliente pode ter vários agendamentos
 [] - O horário de inicio deve ser menor que o horário de término
 
-[] Buscar um agendamento por data e horário
+[] Buscar um agendamento por id
 [] - Retornar o agendamento ou NULL
 
 [] Criar um Pagamento

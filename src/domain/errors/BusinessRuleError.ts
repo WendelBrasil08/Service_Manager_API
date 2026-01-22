@@ -4,7 +4,7 @@ export class BusinessRuleError extends DomainError {
   statusCode = 400;
 
   constructor(message: string) {
-    super("Regra de negócio violada");
+    super("Regra de negócio violada: " + message);
     this.name = "BusinessRuleError";
   }
 }

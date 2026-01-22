@@ -1,5 +1,5 @@
 import { ZodError } from "./../../../node_modules/zod/src/v4/classic/errors";
-import { DomainError } from "../../../domain/errors/domain_error.ts";
+import { DomainError } from "../../../domain/errors/domain_error";
 import { FastifyError, FastifyReply, FastifyRequest } from "fastify";
 
 export async function errorHandler(

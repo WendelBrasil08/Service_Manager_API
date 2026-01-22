@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const servicoSchema = z.object({
-  id: z.string().optional(),
+  id: z.string(),
   nome: z.string().min(3),
   descricao: z.string().min(5),
   preco: z.number().nonnegative(),

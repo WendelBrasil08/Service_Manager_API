@@ -1,14 +1,14 @@
-import { AgendamentoUseCase } from "../../../UseCase/agendamento_use_case";
+import { AgendamentoUseCase } from "../../../usecase/agendamento/agendamento_use_case";
 import { FastifyRequest, FastifyReply } from "fastify";
-import { Agendamento } from "../../../domain/entities/agendamento.ts";
-import { agendamentoSchema } from "../schemas/agendamento_schemas.ts";
+import { Agendamento } from "../../../domain/entities/agendamento";
+import { agendamentoSchema } from "../schemas/agendamento_schemas";
 
 export class AgendamentoController {
   constructor(private agendamentoUseCase: AgendamentoUseCase) {}
   async handle(request: FastifyRequest, reply: FastifyReply) {
     const agendamentoData = agendamentoSchema.parse(request.body);
     const agendamento = await this.agendamentoUseCase.criarAgendamento(
-      agendamentoData as unknown as Agendamento
+      agendamentoData
     );
     reply.status(201).send(agendamento);
   }
