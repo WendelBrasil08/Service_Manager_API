@@ -4,13 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@types/uuid": "^10.0.0"
+    "@types/node": "^25.0.10",
+    "@types/uuid": "^10.0.0",
+    "prisma": "^7.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.3.0"
   }
 }
