@@ -1,5 +1,6 @@
 export enum PagamentoStatus {
   PENDENTE = "PENDENTE",
-  COMPLETO = "COMPLETO",
+  CONFIRMADO = "CONFIRMADO",
   CANCELADO = "CANCELADO",
+  PAGO = "PAGO",
 }

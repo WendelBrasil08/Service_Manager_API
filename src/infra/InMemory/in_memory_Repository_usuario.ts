@@ -1,5 +1,5 @@
-import { UsuarioRepository } from "../../repositories/usuario_repository.ts";
-import { Usuario } from "../../domain/entities/Usuario.ts";
+import { UsuarioRepository } from "../../repositories/usuario_repository";
+import { Usuario } from "../../domain/entities/usuario";
 
 export class InMemoryUsuarioRepository implements UsuarioRepository {
   private usuarios: Usuario[] = [];
@@ -18,5 +18,11 @@ export class InMemoryUsuarioRepository implements UsuarioRepository {
   }
   async deletarUsuario(id: string): Promise<void> {
     this.usuarios = this.usuarios.filter((u) => u.id !== id);
+  }
+  async buscarUsuarioPorEmail(id: string): Promise<Usuario | null> {
+    return this.usuarios.find((u) => u.email === id) || null;
+  }
+  async buscarUsuarioPorId(id: string): Promise<Usuario | null> {
+    return this.usuarios.find((u) => u.id === id) || null;
   }
 }

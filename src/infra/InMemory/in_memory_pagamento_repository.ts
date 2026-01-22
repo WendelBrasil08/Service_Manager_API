@@ -1,5 +1,5 @@
-import { PagamentoRepository } from "../../repositories/pagamento_repository.ts";
-import { Pagamento } from "../../domain/entities/pagamento.ts";
+import { PagamentoRepository } from "../../repositories/pagamento_repository";
+import { Pagamento } from "../../domain/entities/pagamento";
 
 export class InMemoryPagamentoRepository implements PagamentoRepository {
   private pagamentos: Pagamento[] = [];
@@ -8,11 +8,9 @@ export class InMemoryPagamentoRepository implements PagamentoRepository {
     this.pagamentos.push(pagamento);
     return pagamento;
   }
-  async getByClienteId(clienteId: string): Promise<Pagamento[]> {
-    const pagamentos = this.pagamentos.filter(
-      (p) => p.agendamento_id === clienteId
-    );
-    return pagamentos;
+  async getById(id: string): Promise<Pagamento | null> {
+    const pagamento = this.pagamentos.find((p) => p.id === id);
+    return pagamento || null;
   }
   async atualizarPagamento(pagamento: Pagamento): Promise<Pagamento> {
     const index = this.pagamentos.findIndex((p) => p.id === pagamento.id);

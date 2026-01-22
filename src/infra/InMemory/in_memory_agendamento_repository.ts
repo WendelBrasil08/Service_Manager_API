@@ -1,5 +1,5 @@
-import { AgendamentoRepository } from "../../repositories/agendamento_repository.ts";
-import { Agendamento } from "../../domain/entities/agendamento.ts";
+import { AgendamentoRepository } from "../../repositories/agendamento_repository";
+import { Agendamento } from "../../domain/entities/agendamento";
 
 export class InMemoryAgendamentoRepository implements AgendamentoRepository {
   private agendamentos: Agendamento[] = [];
@@ -7,6 +7,9 @@ export class InMemoryAgendamentoRepository implements AgendamentoRepository {
   async criarAgendamento(agendamento: Agendamento): Promise<Agendamento> {
     this.agendamentos.push(agendamento);
     return agendamento;
+  }
+  async buscarTodosAgendamentos(): Promise<Agendamento[]> {
+    return this.agendamentos; 
   }
 
   async buscarAgendamentoPorId(id: string): Promise<Agendamento | null> {
@@ -16,9 +19,6 @@ export class InMemoryAgendamentoRepository implements AgendamentoRepository {
 
   async atualizarAgendamento(agendamento: Agendamento): Promise<Agendamento> {
     const index = this.agendamentos.findIndex((a) => a.id === agendamento.id);
-    if (index === -1) {
-      throw new Error("Agendamento não encontrado");
-    }
     this.agendamentos[index] = agendamento;
     return agendamento;
   }

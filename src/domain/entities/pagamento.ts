@@ -1,13 +1,28 @@
-import { MetodoPagamento } from "../enum/metodo_pagamento.ts";
-import { PagamentoStatus } from "../enum/pagamento_status.ts";
+import { MetodoPagamento } from "../enum/metodo_pagamento";
+import { PagamentoStatus } from "../enum/pagamento_status";
+
+interface PagamentoProps {
+  id?: string;
+  agendamento_id: string;
+  metodo_pagamento: MetodoPagamento;
+  valor: number;
+  data_pagamento: Date;
+  status: PagamentoStatus;
+}
 
 export class Pagamento {
-  constructor(
-    public readonly id: string,
-    public agendamento_id: string,
-    public metodo_pagamento: MetodoPagamento,
-    public valor: string,
-    public data_pagamento: Date,
-    public status: PagamentoStatus
-  ) {}
+  public readonly id: string;
+  public readonly agendamento_id: string;
+  public readonly metodo_pagamento: MetodoPagamento;
+  public readonly valor: number;
+  public readonly data_pagamento: Date;
+  public status: PagamentoStatus;
+  constructor(props: PagamentoProps) {
+    this.id = props.id ?? crypto.randomUUID();
+    this.agendamento_id = props.agendamento_id;
+    this.metodo_pagamento = props.metodo_pagamento;
+    this.valor = props.valor;
+    this.data_pagamento = props.data_pagamento;
+    this.status = props.status;
+  }
 }

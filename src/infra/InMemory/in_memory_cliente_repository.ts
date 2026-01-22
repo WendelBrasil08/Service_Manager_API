@@ -1,5 +1,5 @@
-import { ClienteRepository } from "../../repositories/cliente_repository.ts";
-import { Cliente } from "../../domain/entities/Cliente.ts";
+import { ClienteRepository } from "../../repositories/cliente_repository";
+import { Cliente } from "../../domain/entities/Cliente";
 export class InMemoryClienteRepository implements ClienteRepository {
   private clientes: Cliente[] = [];
 
@@ -15,6 +15,9 @@ export class InMemoryClienteRepository implements ClienteRepository {
   async buscarClientePorId(id: string): Promise<Cliente | null> {
     const cliente = this.clientes.find((c) => c.id === id);
     return cliente || null;
+  }
+  async buscarTodosClientes(): Promise<Cliente[]> {
+    return this.clientes;
   }
 
   async atualizarCliente(cliente: Cliente): Promise<Cliente> {
